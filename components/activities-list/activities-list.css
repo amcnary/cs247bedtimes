@@ -1,0 +1,36 @@
+img {
+    max-width: 98%;
+    margin: 5pt;
+    /*display: block;*/
+}
+a {
+    text-decoration: none;
+}
+.photo {
+    margin: 20pt 10pt;
+    border: 3px solid black;
+    border-radius: 3pt;
+    position: relative;
+    display: inline-block;
+}
+
+#resultsDescription {
+    margin: 20pt;
+    text-align: center;
+}
+.pollResults {
+    /*max-width: 400pt;*/
+    text-align: center;
+}
+.activityBlurb {
+    font-size: 20pt;
+    text-transform: capitalize;
+}
+.activitySuggestion {
+    border: 2pt solid black;
+    border-radius: 10pt;
+}
+.activitySuggestion.img {
+    height: auto;
+    max-width: 150pt;
+}

@@ -1,0 +1,10 @@
+<h1 class="md-display-2">It's time for {{currentActivity.name}}!</h1>
+
+<div ng-if="currentActivity.file_name !== '' ">
+<img src="images/{{currentActivity.file_name}}"></img>
+</div>
+
+<h2 class="md-display-1" id="timeLeftLabel">{{timeLeftLabel}} left before bedtime!</h2>
+
+
+<md-button class="md-raised" href="bedtime.html#/activityFeedback/{{currentActivity.id}}" id="endActivityButton">Goodnight</md-button>

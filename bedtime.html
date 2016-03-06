@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app="cs142App" ng-controller="MainController">
+    <head>
+
+        <title>{{main.title || "Bedtime Activity Generator"}}</title>
+
+        <!-- Angular package imports -->
+        <link href="./node_modules/angular-material/angular-material.css" rel="stylesheet" />
+        <script src="./node_modules/angular/angular.js" type="text/javascript" ></script>
+        <script src="./node_modules/angular-animate/angular-animate.js" type="text/javascript" ></script>
+        <script src="./node_modules/angular-aria/angular-aria.js" type="text/javascript" ></script>
+        <script src="./node_modules/angular-material/angular-material.js" type="text/javascript" ></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+
+
+        <script src="mainController.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+        <script src="modelData/bedtimeApp.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <!-- Imports for activity generator -->
+        <script src="components/activities-list/activities-listController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activities-list/activities-list.css" />
+        <script src="components/activity-poll/activity-pollController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activity-poll/activity-poll.css" />
+        <script src="components/activity-detail/activity-detailController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activity-detail/activity-detail.css" />
+        <script src="components/activity-feedback/activity-feedbackController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activity-feedback/activity-feedback.css" />
+
+
+    </head>
+
+    <body layout="column">
+
+        <md-toolbar layout = "row">
+            <h1 class="md-display-2">Before bedtime...</h1>
+            <span flex></span>
+        </md-toolbar>
+
+        <div class="container" flex layout="row">
+
+            <md-content flex id="content">
+                <div ng-view></div>
+            </md-content>
+
+        </div>
+
+    </body>
+</html>
