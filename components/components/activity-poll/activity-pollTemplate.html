@@ -1,0 +1,36 @@
+<form id="activityParametersForm">
+
+<h1 class="md-display-1">How long until bedtime?</h1>
+<input type="radio" ng-model="params.duration" value="15">
+    15 minutes
+</input>
+<br>
+<input type="radio" ng-model="params.duration" value="30">
+    30 minutes
+</input>
+<!-- <br><input type="radio" ng-model="params.duration" value="60">
+    1 hour
+</input>
+ -->
+
+<h1 class="md-display-1">How active?</h1>
+<input type="radio" ng-model="params.activityLevel" value="high">
+    Super active
+</input>
+<!-- <br>
+<input type="radio" ng-model="params.activityLevel" value="medium">
+    Moderately active
+</input> -->
+<br>
+<input type="radio" ng-model="params.activityLevel" value="low">
+    Not active
+</input>
+</form>
+
+<h2 class="md-display-1">Select activity type</h2>
+<!-- <h2 class="md-display-1">Select activity type (up to 2)</h2> -->
+<span ng-repeat="activityType in activityTypes">
+    <md-button ng-click="updateTags(activityType)" id={{activityType}}>{{activityType}}</md-button>
+</span>
+
+<br><md-button class="md-raised" id="showActivitiesButton" href="bedtime.html#/activities/{{params.duration}}/{{params.activityLevel}}/{{params.tags[0]}}/none">Show Activities</md-button>

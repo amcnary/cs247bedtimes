@@ -1,0 +1,17 @@
+#userDetailDiv{
+    margin: 20pt;
+    max-width: 75%;
+}
+#endActivityButton {
+    font-size: 18pt;
+    text-transform: capitalize;
+    margin: 20pt;
+    max-width: 400pt;
+}
+img {
+    max-width: 240pt;
+}
+#activityDescription {
+    margin: 20pt;
+    text-align: center;
+}

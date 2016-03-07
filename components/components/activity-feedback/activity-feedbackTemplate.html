@@ -1,0 +1,34 @@
+<h1 class="md-display-1">How did {{currentActivity.name}} go?</h1>
+
+
+<table>
+    <tr>
+        <td>Good before bedtime?</td>
+        <td>
+            <md-button class="material-icons" ng-click="toggleApproval('goodBedtime', 'Up')" id="goodBedtimeUp">thumb_up</md-button>
+        </td>
+        <td>
+            <md-button class="material-icons" ng-click="toggleApproval('goodBedtime', 'Down')" id="goodBedtimeDown">thumb_down</md-button>
+        </td>
+    </tr>
+    <tr>
+        <td>Would you try it again?</td>
+        <td>
+            <md-button class="material-icons" ng-click="toggleApproval('tryAgain', 'Up')" id="tryAgainUp">thumb_up</md-button>
+        </td>
+        <td>
+            <md-button class="material-icons" ng-click="toggleApproval('tryAgain', 'Down')" id="tryAgainDown">thumb_down</md-button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Other feedback?
+        </td>
+        <td colspan="2">
+        <input type="text" id="feedbackInput" ng-model="feedback['other']"></input>
+        </td>
+    </tr>
+</table>
+
+<br>
+<md-button ng-click="sendFeedbackEmail()">Leave feedback!</md-button>

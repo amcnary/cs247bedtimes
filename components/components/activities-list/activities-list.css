@@ -32,6 +32,6 @@ a {
     border-radius: 10pt;
 }
 .activitySuggestion.img {
-    height: auto;
+    max-height: 150pt;
     max-width: 150pt;
 }
