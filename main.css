@@ -4,11 +4,11 @@ CSS for the CS142 project #5 main page
 Since CSS uses a global name space for classes we should use class names starting with
 cs142-main- here.
 */
-#appLocation{
-    margin-right: 10pt;
-}
-.advancedOptionsDiv {
-    float: right;
+/* App Colors from https://color.adobe.com/Quiet-Cry-color-theme-124171/ */
+
+body {
+    background-color: #EEEFF7;
+    color: #31353D;
 }
 html {
     font-family: 'Architects Daughter', cursive;
@@ -16,4 +16,32 @@ html {
 div {
     margin: 10pt;
     text-align: center;
+    border-radius: 10pt;
+}
+
+#header {
+    background-color: #1C1D21;
+}
+#navigation {
+    background-color: #445878;
+}
+
+#appLocation{
+    margin-right: 10pt;
+}
+#greeting {
+    float: right;
+}
+#selected {
+    font-weight: bold;
+    background-color: #EEEFF7;
+    color: #31353D;
+    border-radius: 0pt;
+}
+#filterActivities {
+    width: 40%;
+    /*border: 1pt solid #92CDCF;*/
+}
+#weeklyActivities {
+    width: 40%;
 }

@@ -8,17 +8,23 @@ cs142App.controller('ActivityDetailController', ['$scope', '$routeParams', '$int
     
     $scope.currentActivity = window.bedtimeModels.activityById($routeParams.activityId);
 
+    $scope.timerStarted = false;
     $scope.timeLeft  = $scope.currentActivity.duration * 60;
     $scope.initialTime = $scope.timeLeft;
     $scope.timeLeftLabel = parseInt($scope.timeLeft/60) + ' minutes and ' + ($scope.timeLeft % 60) + ' seconds';
+    $scope.startTimer = function() {
+      $scope.timerStarted = true;
+    }
 
     $interval( function() {
-                  $scope.timeLeft  -= 1;
-                  $scope.timeLeftLabel = parseInt($scope.timeLeft/60) + ' minutes and ' + ($scope.timeLeft % 60) + ' seconds'; 
-                  if($scope.timeLeft <= 0){
-                    alert("Time's up!");
-                    document.getElementById('timeLeftLabel').style.display = "none";
+                  if($scope.timerStarted) {
+                    $scope.timeLeft  -= 1;
+                    $scope.timeLeftLabel = parseInt($scope.timeLeft/60) + ' minutes and ' + ($scope.timeLeft % 60) + ' seconds'; 
+                    if($scope.timeLeft <= 0){
+                      alert("Time's up!");
+                      document.getElementById('timeLeftLabel').style.display = "none";
+                    }                    
                   }
-                }, 1000, $scope.initialTime);
+                }, 1000, 90000);
 
   }]);

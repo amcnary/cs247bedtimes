@@ -1,0 +1,46 @@
+#endActivityButton {
+    font-size: 18pt;
+    text-transform: capitalize;
+    margin: 20pt;
+    max-width: 400pt;
+}
+/*img.activityImg {
+    width: auto;
+    height: 70%;
+    overflow: hidden;
+    border-radius: 5pt;
+    text-align: center;
+    margin-left: -3%;
+    position: relative;
+}*/
+/*.dailyActivity {
+    float: left;
+    border: 2pt solid #1C1D21;
+    width: 12%;
+    min-width: 120pt;
+    height: 300pt;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 2pt;
+    background-color: #EEEFF7;
+}*/
+#weeklyActivityList {
+    text-align: left;
+    margin: 0pt;
+}
+.newActivity {
+    color: #92CDCF;
+    font-size: 10pt;
+    /*float: right;*/
+}
+.dailyActivityThumbnail {
+    font-size: 10pt;
+}
+.activityName {
+    text-align: left;
+    vertical-align: bottom;
+    margin: 0pt;
+}
+h3.ng-binding {
+    margin: 0pt;
+}

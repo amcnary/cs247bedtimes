@@ -1,6 +1,7 @@
 <form id="activityParametersForm">
 
-<h1 class="md-display-1">How long until bedtime?</h1>
+<h1> Filter Activities </h1>
+<h2 >How long until bedtime?</h2>
 <input type="radio" ng-model="params.duration" value="15">
     15 minutes
 </input>
@@ -13,7 +14,7 @@
 </input>
  -->
 
-<h1 class="md-display-1">How active?</h1>
+<h2 >How active?</h2>
 <input type="radio" ng-model="params.activityLevel" value="high">
     Super active
 </input>
@@ -27,7 +28,7 @@
 </input>
 </form>
 
-<h2 class="md-display-1">Select activity type</h2>
+<h2 >Select activity type</h2>
 <!-- <h2 class="md-display-1">Select activity type (up to 2)</h2> -->
 <span ng-repeat="activityType in activityTypes">
     <md-button ng-click="updateTags(activityType)" id={{activityType}}>{{activityType}}</md-button>

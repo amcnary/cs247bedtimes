@@ -47,7 +47,7 @@
    // var activity27 = {name: 'A treasure hunt', rating: 3.0, file_name: '', activity_level: 'medium', tag: 'teamwork-related', duration: 60, id: 27};
 
    var activity1 = {name: 'Coloring', rating: 3.0, description:'',link:'',file_name: 'drawing.JPG', activity_level: 'low', tag: 'creative', duration: 15, id: 1};
-   var activity2 = {name: 'Building something', rating: 3.0, description: 'Build something using legos, blocks,Shopkins,creative train sets ,spaghetti, marshmallows, popsicle sticks, cards, or whatever you have around.', link:'', file_name: 'building_blocks.JPG', activity_level: 'low', tag: 'creative', duration: 30, id: 2};
+   var activity2 = {name: 'Building something', rating: 3.0, description: 'Build something using legos, blocks, Shopkins, creative train sets ,spaghetti, marshmallows, popsicle sticks, cards, or whatever you have around.', link:'', file_name: 'building_blocks.JPG', activity_level: 'low', tag: 'creative', duration: 30, id: 2};
    var activity3 = {name: 'Photo storytelling', rating: 3.0, description: '', link:'',file_name: 'photo_storytelling.JPG', activity_level: 'low', tag: 'creative', duration: 15, id: 3};
    var activity4 = {name: 'The listening game', rating: 3.0, description: 'Take out several miscellaneous items. Have the children look at all the items, and then take them away. Next, ask one child to hide his or her eyes and listen as you pick up an item and make sounds with it. Ask the child to guess which item made the sound. Examples of items might be a comb (run your fingers along it), a glass (gently tap it), cymbals, shakers, sandpaper, blocks rubbed together, a pot and spoon. Be creative and have fun!',link:'',file_name: 'listening.jpg', activity_level: 'low', tag: 'creative', duration: 30, id: 4};
    var activity5 = {name: 'Shadow Puppets', rating: 3.0, description: 'Learn how to use your hands and a light source to create shadow puppets', link:'https://www.youtube.com/watch?v=Kz8wP2RYy64',file_name: 'shadow_puppets.JPG', activity_level: 'low', tag: 'creative', duration: 30, id: 5};
@@ -87,6 +87,10 @@
       return activities;
    }
 
+   var activitiesCount = function() {
+      return activities.length;
+   }
+
    var activitiesFilteredModel = function(duration, activity_level, tag) {
       var activitiesToReturn = [];
       for(var i = 0; i < activities.length; i++) {
@@ -114,7 +118,8 @@
    var bedtimeModels = {
       activitiesList: activitiesListModel,
       activitiesFiltered: activitiesFilteredModel,
-      activityById: activityByIdModel
+      activityById: activityByIdModel,
+      activitiesCount: activitiesCount
    }
 
    if(typeof exports !== 'undefined') {

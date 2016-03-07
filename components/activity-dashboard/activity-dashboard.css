@@ -1,0 +1,37 @@
+#userDetailDiv{
+    margin: 20pt;
+    max-width: 75%;
+}
+#endActivityButton {
+    font-size: 18pt;
+    text-transform: capitalize;
+    margin: 20pt;
+    max-width: 400pt;
+}
+img.activityImg {
+    width: auto;
+    height: 70%;
+    overflow: hidden;
+    border-radius: 5pt;
+    text-align: center;
+    margin-left: -3%;
+    position: relative;
+}
+.dailyActivity {
+    float: left;
+    border: 2pt solid #445878;
+    width: 12%;
+    min-width: 120pt;
+    height: 300pt;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 2pt;
+    background-color: #EEEFF7;
+}
+#actionButtons {
+    display: inline-block;
+}
+#weeklyActivityList {
+    display: inline-block;
+    font-size: 14pt;
+}

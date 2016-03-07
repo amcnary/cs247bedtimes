@@ -1,14 +1,30 @@
+<div id="filterOpenButton">
+ <md-button ng-click="main.toggleFilter()" class="material-icons" ng-if="!main.filterOpen">keyboard_arrow_right</md-button>
+ <md-button ng-click="main.toggleFilter()" class="material-icons" ng-if="main.filterOpen">keyboard_arrow_left</md-button>
+ </div>
+
 <h1 class="md-display-2">It's time for {{currentActivity.name}}!</h1>
-<div ng-if="currentActivity.description !== '' ">
-<div id="activityDescription">{{currentActivity.description}}
-<a ng-if="currentActivity.link !== '' "href= {{currentActivity.link}}>here</a>
-</div>
-</div>
+
 <div ng-if="currentActivity.file_name !== '' ">
 <img src="images/{{currentActivity.file_name}}"></img>
 </div>
 
-<h2 class="md-display-1" id="timeLeftLabel">{{timeLeftLabel}} left before bedtime!</h2>
 
+<div ng-if="currentActivity.description !== '' ">
+    <div id="activityDescription">{{currentActivity.description}}
+        <a ng-if="currentActivity.link !== '' "href= {{currentActivity.link}}>here</a>
+    </div>
+</div>
 
-<md-button class="md-raised" href="bedtime.html#/activityFeedback/{{currentActivity.id}}" id="endActivityButton">Goodnight</md-button>
+<div ng-if="!timerStarted">
+    <md-button ng-click="startTimer()">
+        Start Activity!
+    </md-button>
+</div>
+
+<div ng-if="timerStarted" id="timerDiv">
+    <div id="timerContent">
+        <h2 class="md-display-1" id="timeLeftLabel">{{timeLeftLabel}} left before bedtime!</h2>
+        <md-button class="md-raised" href="bedtime.html#/activityFeedback/{{currentActivity.id}}" id="endActivityButton">Goodnight</md-button>
+    </div>
+</div>

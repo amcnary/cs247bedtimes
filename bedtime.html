@@ -29,23 +29,42 @@
         <link rel="stylesheet" type="text/css" href="components/activity-detail/activity-detail.css" />
         <script src="components/activity-feedback/activity-feedbackController.js"></script>
         <link rel="stylesheet" type="text/css" href="components/activity-feedback/activity-feedback.css" />
+        <script src="components/activity-dashboard/activity-dashboardController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activity-dashboard/activity-dashboard.css" />
+        <script src="components/activity-dashboard-menu/activity-dashboard-menuController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activity-dashboard-menu/activity-dashboard-menu.css" />
 
 
     </head>
 
     <body layout="column">
 
-        <md-toolbar layout = "row">
-            <h1 class="md-display-2">Before bedtime...</h1>
+        <md-toolbar layout="row" id="header">
+            <h1 class="md-display-2">Home for Bedtime</h1>
             <span flex></span>
+            <h2 class="md-display-1" id="greeting">Hi, Christy!</h2>
         </md-toolbar>
 
+        <md-toolbar layout = "row" id="navigation">
+            <md-button class="md-toolbar-tools weeklyDashboard" href="/bedtime.html#/weeklyDashboard" ng-click="navigateTo('weeklyDashboard')">
+                Weekly Dashboard
+            </md-button>
+            <md-button class="md-toolbar-tools quickEvent" id="selected" ng-click="navigateTo('quickEvent')">
+                Quick Event
+            </md-button>
+        </md-toolbar>            
+
         <div class="container" flex layout="row">
+            <md-sidenav md-is-locked-open="$mdMedia('min-width: 420px')" class="md-whiteframe-z2" id="filterActivities" ng-if="main.quickEvent && main.filterOpen">
+                <div ng-include="'components/activity-poll/activity-pollTemplate.html'" ng-controller="ActivityPollController"></div>
+            </md-sidenav>
+            <md-sidenav md-is-locked-open="$mdMedia('min-width: 640px')" class="md-whiteframe-z2" id="weeklyActivities" ng-if="!main.quickEvent && main.filterOpen">
+                <div ng-include="'components/activity-dashboard-menu/activity-dashboard-menuTemplate.html'" ng-controller="ActivityDashboardMenuController"></div>
+            </md-sidenav>
 
             <md-content flex id="content">
                 <div ng-view></div>
             </md-content>
-
         </div>
 
     </body>
