@@ -6,21 +6,21 @@ cs142App.controller('ActivityDetailController', ['$scope', '$routeParams', '$int
      * $routeParams  should have the userId property set with the path from the URL.
      */
     
-    $scope.currentActivity = window.bedtimeModels.activityById($routeParams.activityId);
+    $scope.main.currentActivity = window.bedtimeModels.activityById($routeParams.activityId);
 
-    $scope.timerStarted = false;
-    $scope.timeLeft  = $scope.currentActivity.duration * 60;
-    $scope.initialTime = $scope.timeLeft;
-    $scope.timeLeftLabel = parseInt($scope.timeLeft/60) + ' minutes and ' + ($scope.timeLeft % 60) + ' seconds';
+    $scope.main.timerStarted = false;
+    $scope.main.timeLeft  = $scope.main.currentActivity.duration * 60;
+    $scope.main.initialTime = $scope.main.timeLeft;
+    $scope.main.timeLeftLabel = parseInt($scope.main.timeLeft/60) + ' minutes and ' + ($scope.main.timeLeft % 60) + ' seconds';
     $scope.startTimer = function() {
-      $scope.timerStarted = true;
+      $scope.main.timerStarted = true;
     }
 
     $interval( function() {
-                  if($scope.timerStarted) {
-                    $scope.timeLeft  -= 1;
-                    $scope.timeLeftLabel = parseInt($scope.timeLeft/60) + ' minutes and ' + ($scope.timeLeft % 60) + ' seconds'; 
-                    if($scope.timeLeft <= 0){
+                  if($scope.main.timerStarted) {
+                    $scope.main.timeLeft  -= 1;
+                    $scope.main.timeLeftLabel = parseInt($scope.main.timeLeft/60) + ' minutes and ' + ($scope.main.timeLeft % 60) + ' seconds'; 
+                    if($scope.main.timeLeft <= 0){
                       alert("Time's up!");
                       document.getElementById('timeLeftLabel').style.display = "none";
                     }                    

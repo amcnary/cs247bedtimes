@@ -1,28 +1,61 @@
-<div id="filterOpenButton" ng-if="!main.quickEvent">
+<div id="activityOverlayWindow" ng-if="showingActivity">
+    <div id="activityFrame">
+        <ng-include src="'components/activity-detail/activity-detailTemplate.html'">
+        </ng-include>
+        <br>
+        <md-button ng-click="hideActivity()">Back to Week</md-button>
+    </div>
+</div>
+
+<div id="filterOpenButton">
  <md-button ng-click="main.toggleFilter()" class="material-icons" ng-if="!main.filterOpen">keyboard_arrow_right</md-button>
  <md-button ng-click="main.toggleFilter()" class="material-icons" ng-if="main.filterOpen">keyboard_arrow_left</md-button>
  </div>
 
-
-<h1 class="md-display-2">Weekly Dashboard</h1>
-
-<div id="weeklyActivityList">
-    <div class="dailyActivity" ng-repeat="curActivity in main.weeklyActivities track by $index">
-        <h2>{{weekdays[$index]}}
-<span class="material-icons newActivity" ng-click="main.newActivity($index)">refresh</span>
-        </h2>        
-        <a href="/bedtime.html#/activity/{{curActivity.id}}">
-
-        <span ng-if="curActivity.file_name !== '' ">
-        <img src="images/{{curActivity.file_name}}" class="activityImg"></img>
-        </span>
-        <br>
-        <h3>{{curActivity.name}}</h3>
-        </a>
-    </div>
+<div id="dashboardSubheader">
+<span><h1 class="md-display-2">Weekly Dashboard</h1></span>
+<span flex></span>
+    <span id="actionButtons">
+        <md-button ng-click="exportToPdf()">Export as PDF</md-button>
+        <md-button ng-click="main.resetActivities()">Reset All</md-button>
+    </span>
 </div>
 
-<div id="actionButtons">
-<md-button ng-click="exportToPdf()">Export as PDF</md-button>
-<md-button ng-click="main.resetWeekActivities()">Reset All</md-button>
-</div>
+ <div class="table">
+ <table id="eventCalendar">
+    <tr id="weekdayRow">
+        <td class="weekdayLabel"> Sunday </td>
+        <td class="weekdayLabel"> Monday </td>
+        <td class="weekdayLabel"> Tuesday </td>
+        <td class="weekdayLabel"> Wednesday </td>
+        <td class="weekdayLabel"> Thursday </td>
+        <td class="weekdayLabel"> Friday </td>
+        <td class="weekdayLabel"> Saturday </td>
+    </tr>
+     <tr id="activityNameRow">
+        <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityNameContainer"> 
+            {{activity.name}}
+        </td>
+    </tr>
+    
+    <tr id="activityImageRow">
+        <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityImgContainer" ng-mouseenter="showActivityDetails[$index]=true" ng-mouseleave="showActivityDetails[$index]=false" id="td{{$index}}"> 
+            <img src="images/{{activity.file_name}}" class="activityImg" ng-hide="showActivityDetails[$index]"></img>
+            <div ng-show="showActivityDetails[$index]" class="activityDescription">
+                <b>Number of People:</b> 1-3
+                <br>
+                <b>Time:</b> 10-{{activity.duration}} minutes
+                <br>
+                {{activity.description}}
+            </div>
+        </td>
+    </tr>
+
+    <tr id="activityActionsRow">
+        <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityActionsContainer"> 
+            <md-button class="refreshActivityButton material-icons" ng-click="main.newActivity($index)">refresh</md-button>
+            <md-button class="startActivityButton material-icons" ng-click="showActivity($index)">play_circle_outline</md-button>
+        </td>
+    </tr>
+</table>
+ </div>

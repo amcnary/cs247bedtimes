@@ -1,7 +1,7 @@
-#userDetailDiv{
+/*#userDetailDiv{
     margin: 20pt;
     max-width: 75%;
-}
+}*/
 #endActivityButton {
     font-size: 18pt;
     text-transform: capitalize;
@@ -11,7 +11,8 @@
 /*img {
     max-width: 240pt;
 }
-*/#filterOpenButton {
+*/
+#filterOpenButton {
     float: left;
     margin: 0pt;
 }

@@ -6,26 +6,40 @@ cs142-main- here.
 */
 /* App Colors from https://color.adobe.com/Quiet-Cry-color-theme-124171/ */
 
+/* New app colors: https://color.adobe.com/Friends-and-foes-color-theme-1175537/
+*/
+
 body {
-    background-color: #EEEFF7;
+    background-color: #A3FFB4;
     color: #31353D;
 }
 html {
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Lora', serif;
+    background: #FCF9FF;
 }
 div {
     margin: 10pt;
     text-align: center;
     border-radius: 10pt;
 }
-
+h1, h2, h3 {
+    font-family: 'Istok Web', sans-serif;
+    margin: 20pt;
+}
+h1 {
+    letter-spacing: -3pt;
+}
+#siteTitle {
+    color: #FCF9FF;
+}
 #header {
-    background-color: #1C1D21;
+    background-color: #46BCFF;
+    border-bottom: 2pt solid #3543E8;
+    color: #FCF9FF;
 }
 #navigation {
-    background-color: #445878;
+    background-color: #46BCFF;
 }
-
 #appLocation{
     margin-right: 10pt;
 }
@@ -34,7 +48,7 @@ div {
 }
 #selected {
     font-weight: bold;
-    background-color: #EEEFF7;
+    background-color: #A3FFB4;
     color: #31353D;
     border-radius: 0pt;
 }
@@ -44,4 +58,8 @@ div {
 }
 #weeklyActivities {
     width: 40%;
+}
+
+#noScroll {
+    overflow: none;
 }

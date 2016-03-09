@@ -34,7 +34,7 @@ cs142App.config(['$routeProvider',
                 controller: 'ActivityDashboardMenuController'
             }).
             otherwise({
-                redirectTo: '/activityPoll'
+                redirectTo: '/weeklyDashboard'
             });
     }]);
 
@@ -61,7 +61,7 @@ cs142App.controller('MainController', ['$scope', '$location',
             document.getElementsByClassName(navBarButtonClass)[0].id = "selected";
             if(navBarButtonClass === 'quickEvent') {
                 $scope.main.randomActivityId = Math.floor(Math.random() * activitiesCount) + 1;
-                $location.path('/activity/' + $scope.main.randomActivityId);
+                $location.path('activity/' + $scope.main.randomActivityId);
             }
         }
 
