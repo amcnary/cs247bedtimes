@@ -1,14 +1,18 @@
 'use strict';
-cs142App.controller('ActivityDetailController', ['$scope', '$routeParams', '$interval',
+cs142App.controller('ActivityForCalendarDetailController', ['$scope', '$routeParams', '$interval',
   function ($scope, $routeParams, $interval) {
     /*
      * Since the route is specified as '/users/:userId' in $routeProvider config the
      * $routeParams  should have the userId property set with the path from the URL.
      */
-    
-    $scope.currentActivity = window.bedtimeModels.activityById($routeParams.activityId);
-    $scope.main.navigateTo('likedActivities');
+    $scope.weekday = (JSON.parse($routeParams.dayOfWeek) + 7) % 7;
+    $scope.activityForCalendar = $scope.main.weeklyActivities[$scope.weekday];
+    $scope.main.navigateTo('weeklyDashboard');
     $scope.daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    $scope.dayOfWeek = $scope.daysOfWeek[$scope.weekday];
+    $scope.dayBefore = $scope.daysOfWeek[($scope.weekday + 6) % 7];
+    $scope.dayAfter = $scope.daysOfWeek[($scope.weekday + 1) % 7];
+    console.log(($scope.weekday + 6) % 7, ($scope.weekday), ($scope.weekday + 1) % 7);
 
     $scope.isFavorite = function(activity) {
       // // console.log($scope.main.likedActivities.indexOf(activity) !== -1);
@@ -20,14 +24,20 @@ cs142App.controller('ActivityDetailController', ['$scope', '$routeParams', '$int
       return 'notFavorite';
     };
     $scope.swapOutCurrentEvent = function(index) {
-      $scope.main.weeklyActivities[index] = $scope.currentActivity;
-      console.log($scope.currentActivity.name, ' is on the schedule!');
-      alert($scope.currentActivity.name, ' is on the schedule!');
+      $scope.main.weeklyActivities[index] = $scope.activityForCalendar;
+      console.log($scope.activityForCalendar.name, ' is on the schedule!');
+      alert($scope.activityForCalendar.name, ' is on the schedule!');
     }
+    $scope.newRandomEvent = function() {
+      console.log('oh boy', $scope.main.weeklyActivities);
+      $scope.main.newActivity($scope.weekday);
+      $scope.activityForCalendar = $scope.main.weeklyActivities[$scope.weekday];
+      console.log('and now, )', $scope.main.weeklyActivities);
+    };
 
     // Timer stuff -- broken, but don't worry about it
     $scope.main.timerStarted = false;
-    $scope.main.timeLeft  = $scope.currentActivity.duration * 60;
+    $scope.main.timeLeft  = $scope.activityForCalendar.duration * 60;
     $scope.main.initialTime = $scope.main.timeLeft;
     $scope.main.timeLeftLabel = parseInt($scope.main.timeLeft/60) + ' minutes and ' + ($scope.main.timeLeft % 60) + ' seconds';
     $scope.startTimer = function() {

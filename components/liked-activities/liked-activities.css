@@ -1,0 +1,20 @@
+.likedActivity {
+    float: left;
+}
+.activityBlurb {
+    color: #39B8AD;    
+}
+#likedActivitiesTitle {
+    margin: 40pt;
+    font-weight: bolder;
+    color: #555FD1;
+    font-size: 40pt;
+    float: left;
+}
+#likedActivityHeader {
+    width: 100%;
+    display: inline-block;
+}
+.likedActivityImg {
+    border: 3pt solid black;
+}

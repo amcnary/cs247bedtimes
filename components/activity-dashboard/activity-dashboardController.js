@@ -19,18 +19,7 @@ cs142App.controller('ActivityDashboardController', ['$scope', '$routeParams', '$
       $scope.main.resetActivities();
     }
 
-    $scope.showingActivity = false;
-    $scope.main.currentActivity = $scope.main.weeklyActivities[0];
-    $scope.hideActivity = function() {
-      $scope.showingActivity = false;
-      document.getElementById('activityOverlayWindow').style.visibility = "hidden";
-    }
-    $scope.showActivity = function(activityIndex) {
-      $scope.main.currentActivity = $scope.main.weeklyActivities[activityIndex];
-      $scope.showingActivity = true;
-      $scope.main.currentActivityLink = '/bedtime.html#/activity/' + $scope.main.currentActivity.id;
-      console.log($scope.main.currentActivityLink);
-    }
+    $scope.currentActivity = $scope.main.weeklyActivities[0];
 
     $scope.main.newActivity = function(dayIndex){
       var weeklyActivities = $scope.main.weeklyActivities;
@@ -39,37 +28,17 @@ cs142App.controller('ActivityDashboardController', ['$scope', '$routeParams', '$
       $scope.main.weeklyActivities = weeklyActivities;
     };  
 
-    $scope.main.goToActivity = function(activityId){
-      $location.path('/activity/' + activityId);
+    $scope.main.goToActivity = function(dayOfWeek){
+      $location.path('/activityForCalendar/' + dayOfWeek);
     }
 
     $scope.showActivityDetails = function(activityId) {
-
     } 
-
     $scope.showActivityDetails = [false, false, false, false, false, false, false];
 
+    $scope.exportToPdf = function() {
+      console.log('downloading');
+      alert('Creating PDF now!');
+    };
 
-
-
-
-
-    $scope.main.timerStarted = false;
-    $scope.main.timeLeft  = $scope.main.currentActivity.duration * 60;
-    $scope.main.initialTime = $scope.main.timeLeft;
-    $scope.main.timeLeftLabel = parseInt($scope.main.timeLeft/60) + ' minutes and ' + ($scope.main.timeLeft % 60) + ' seconds';
-    $scope.startTimer = function() {
-      $scope.main.timerStarted = true;
-    }
-
-    $interval( function() {
-                  if($scope.main.timerStarted) {
-                    $scope.main.timeLeft  -= 1;
-                    $scope.main.timeLeftLabel = parseInt($scope.main.timeLeft/60) + ' minutes and ' + ($scope.main.timeLeft % 60) + ' seconds'; 
-                    if($scope.main.timeLeft <= 0){
-                      alert("Time's up!");
-                      document.getElementById('timeLeftLabel').style.display = "none";
-                    }                    
-                  }
-                }, 1000, 90000);
   }]);

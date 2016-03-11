@@ -1,0 +1,15 @@
+<div id="likedActivityHeader">
+<h1 class="md-display-2" id="likedActivitiesTitle">
+    Liked Activities
+</h1>
+<span flex></span>
+</div>
+
+<div class="likedActivity" ng-repeat="activity in activities">
+    <a href="bedtime.html#/activity/{{activity.id}}">
+        <div ng-if="activity.file_name != ''">
+            <img src="images/{{activity.file_name}}" class="likedActivityImg"></img>
+        </div>
+        <md-button id="selectActivity{{activity.id}}" class='activityBlurb' href="bedtime.html#/activity/{{activity.id}}">{{activity.name}}</md-button>
+    </a>
+</div>

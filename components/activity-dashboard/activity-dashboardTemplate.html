@@ -1,4 +1,4 @@
-<div id="activityOverlayWindow" ng-if="showingActivity">
+<!-- <div id="activityOverlayWindow" ng-if="showingActivity">
     <div id="activityFrame">
         <ng-include src="'components/activity-detail/activity-detailTemplate.html'">
         </ng-include>
@@ -6,19 +6,17 @@
         <md-button ng-click="hideActivity()">Back to Week</md-button>
     </div>
 </div>
-
-<div id="filterOpenButton">
+ -->
+<!-- <div id="filterOpenButton">
  <md-button ng-click="main.toggleFilter()" class="material-icons" ng-if="!main.filterOpen">keyboard_arrow_right</md-button>
  <md-button ng-click="main.toggleFilter()" class="material-icons" ng-if="main.filterOpen">keyboard_arrow_left</md-button>
  </div>
+ -->
+
 
 <div id="dashboardSubheader">
-<span><h1 class="md-display-2">Weekly Dashboard</h1></span>
+<span><h1 class="md-display-3 dashboardTitle">Weekly Dashboard</h1></span>
 <span flex></span>
-    <span id="actionButtons">
-        <md-button ng-click="exportToPdf()">Export as PDF</md-button>
-        <md-button ng-click="main.resetActivities()">Reset All</md-button>
-    </span>
 </div>
 
  <div class="table">
@@ -33,29 +31,46 @@
         <td class="weekdayLabel"> Saturday </td>
     </tr>
      <tr id="activityNameRow">
-        <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityNameContainer"> 
-            {{activity.name}}
+        <td ng-repeat="activity in main.weeklyActivities track by $index"> 
+            <div class="activityNameContainer" ng-click="main.goToActivity($index)"><h3>{{activity.name}}</h3></div>
         </td>
     </tr>
     
     <tr id="activityImageRow">
         <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityImgContainer" ng-mouseenter="showActivityDetails[$index]=true" ng-mouseleave="showActivityDetails[$index]=false" id="td{{$index}}"> 
-            <img src="images/{{activity.file_name}}" class="activityImg" ng-hide="showActivityDetails[$index]"></img>
-            <div ng-show="showActivityDetails[$index]" class="activityDescription">
-                <b>Number of People:</b> 1-3
-                <br>
-                <b>Time:</b> 10-{{activity.duration}} minutes
-                <br>
-                {{activity.description}}
+            <div ng-click="main.goToActivity($index)">
+                <img src="images/{{activity.file_name}}" class="activityImg" ng-hide="showActivityDetails[$index]"></img>
+                <div ng-show="showActivityDetails[$index]" class="activityDescription">
+                    <b>Number of People:</b> 1-3
+                    <br>
+                    <b>Time:</b> 10-{{activity.duration}} minutes
+                    <br>
+                    {{activity.description}}
+                </div>
             </div>
         </td>
     </tr>
-
-    <tr id="activityActionsRow">
+    
+    <tr class="activityActionsRow">
         <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityActionsContainer"> 
-            <md-button class="refreshActivityButton material-icons" ng-click="main.newActivity($index)">refresh</md-button>
-            <md-button class="startActivityButton material-icons" ng-click="showActivity($index)">play_circle_outline</md-button>
+            <div class="arrowsLeftRight">
+            <md-button class="material-icons shortButtonInvertedStyle refreshActivityButton" ng-click="main.newActivity($index)">keyboard_arrow_left</md-button>
+            <md-button class="material-icons shortButtonInvertedStyle refreshActivityButton" ng-click="main.newActivity($index)">keyboard_arrow_right</md-button>
         </td>
     </tr>
+    <tr class="activityActionsRow">
+        <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityActionsContainer"> 
+            <md-button class="shortButtonStyle startActivityButton" ng-click="main.goToActivity($index)">View</md-button>
+        </td>
+    </tr>
+
 </table>
+
+
+
+<div id="actionButtons">
+    <md-button class="buttonStyle" ng-click="exportToPdf()">Export as PDF</md-button>
+    <md-button class="buttonStyle" ng-click="main.resetActivities()">Reset All</md-button>
+</div>
+
  </div>

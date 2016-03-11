@@ -32,6 +32,10 @@
         <link rel="stylesheet" type="text/css" href="components/activity-dashboard/activity-dashboard.css" />
         <script src="components/activity-dashboard-menu/activity-dashboard-menuController.js"></script>
         <link rel="stylesheet" type="text/css" href="components/activity-dashboard-menu/activity-dashboard-menu.css" />
+        <script src="components/liked-activities/liked-activitiesController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/liked-activities/liked-activities.css" />
+        <script src="components/activity-detail-for-calendar/activity-detail-for-calendarController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/activity-detail-for-calendar/activity-detail-for-calendar.css" />
 
 
     </head>
@@ -39,19 +43,15 @@
     <body layout="column" id="noScroll">
 
         <md-toolbar layout="row" id="header">
-            <h1 class="md-display-3"><a href="bedtime.html#/weeklyDashboard" id="siteTitle">Quality Time</a></h1>
+            <h1 class="md-display-3"><a href="bedtime.html#/weeklyDashboard" id="siteTitle"><b>Quality</b> Time</a></h1>
             <span flex></span>
-            <h2 class="md-display-1" id="greeting">Hi, Christy!</h2>
         </md-toolbar>
 
-<!--         <md-toolbar layout = "row" id="navigation">
-            <md-button class="md-toolbar-tools weeklyDashboard" href="bedtime.html#/weeklyDashboard" ng-click="navigateTo('weeklyDashboard')">
-                Weekly Dashboard
-            </md-button>
-            <md-button class="md-toolbar-tools quickEvent" id="selected" ng-click="navigateTo('quickEvent')">
-                Quick Event
-            </md-button>
-        </md-toolbar>   -->          
+        <md-toolbar layout = "row" id="navigation">
+            <span flex></span>
+            <a href="bedtime.html#/weeklyDashboard"><h2 class="nav weeklyDashboard" id="selected" ng-click="main.navigateTo('weeklyDashboard')">Weekly Dashboard</h2></a>
+            <a href="bedtime.html#/likedActivities"><h2 class="nav likedActivities" ng-click="main.navigateTo('likedActivities')">Liked Activities</h2></a>
+        </md-toolbar>            
 
         <div class="container" flex layout="row">
             <md-sidenav md-is-locked-open="$mdMedia('min-width: 420px')" class="md-whiteframe-z2" id="filterActivities" ng-if="main.quickEvent && main.filterOpen">
