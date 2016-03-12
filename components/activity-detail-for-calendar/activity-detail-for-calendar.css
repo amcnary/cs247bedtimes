@@ -14,7 +14,7 @@ a {
     display: inline-block;
 }
 .weekdayRow {
-    border: 5pt solid black;
+    border: 3pt solid black;
 }
 .navWeekday {
     color: black;
@@ -31,7 +31,7 @@ a {
 }
 #dailyView {
     height: 100%;
-    border: 5pt solid black;
+    border: 3pt solid black;
 }
 #activityForCalendarHeader {
     margin: 18pt;
@@ -59,7 +59,7 @@ a {
     color: black;
     font-size: 16pt;
     font-weight: normal;
-    border: 5pt solid black;
+    border: 3pt solid black;
 }
 #activityDescription {
     margin-bottom: 40pt;

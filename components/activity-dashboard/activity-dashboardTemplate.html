@@ -47,10 +47,10 @@
             <div ng-click="main.goToActivity($index)">
                 <img src="images/{{activity.file_name}}" class="activityImg" ng-hide="showActivityDetails[$index]"></img>
                 <div ng-show="showActivityDetails[$index]" class="activityDescription">
-                    <b>Number of People:</b> 1-3
+                    <b>Number of People:</b> 2-4
                     <br>
                     <b>Time:</b> 10-{{activity.duration}} minutes
-                    <br>
+                    <p>
                     {{activity.description}}
                 </div>
             </div>
