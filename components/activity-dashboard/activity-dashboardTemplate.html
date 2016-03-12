@@ -13,6 +13,12 @@
  </div>
  -->
 
+<div ng-show="exportingPDF" id="exporting">
+    <img id="pdf" src="images/samplePdf.jpg"></img>
+    <br>
+    <md-button class="md-raised" ng-click="exportingPDF = !exportingPDF">Back</md-button>
+</div>
+
 
 <div id="dashboardSubheader">
 <span><h1 class="md-display-3 dashboardTitle">Weekly Dashboard</h1></span>
@@ -54,8 +60,8 @@
     <tr class="activityActionsRow">
         <td ng-repeat="activity in main.weeklyActivities track by $index" class="activityActionsContainer"> 
             <div class="arrowsLeftRight">
-            <md-button class="material-icons shortButtonInvertedStyle refreshActivityButton" ng-click="main.newActivity($index)">keyboard_arrow_left</md-button>
-            <md-button class="material-icons shortButtonInvertedStyle refreshActivityButton" ng-click="main.newActivity($index)">keyboard_arrow_right</md-button>
+            <md-button class="material-icons shortButtonInvertedStyle refreshActivityButton" ng-click="lastEvent($index)" ng-disabled="pastActivitiesStack[$index].length === 0">keyboard_arrow_left</md-button>
+            <md-button class="material-icons shortButtonInvertedStyle refreshActivityButton" ng-click="newRandomEvent($index)">keyboard_arrow_right</md-button>
         </td>
     </tr>
     <tr class="activityActionsRow">
@@ -69,7 +75,7 @@
 
 
 <div id="actionButtons">
-    <md-button class="buttonStyle" ng-click="exportToPdf()">Export as PDF</md-button>
+    <md-button class="buttonStyle" ng-click="exportingPDF = true">Export as PDF</md-button>
     <md-button class="buttonStyle" ng-click="main.resetActivities()">Reset All</md-button>
 </div>
 

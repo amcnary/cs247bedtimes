@@ -41,8 +41,8 @@ cs142App.config(['$routeProvider',
 cs142App.controller('MainController', ['$scope', '$location',
     function ($scope, $location) {
         $scope.main = {};
-        $scope.main.title = {title: 'Bedtime Activities'};
-        $scope.main.location = '';
+        $scope.main.title = 'Quality Time';
+        // $scope.main.location = '';
         $scope.main.quickEvent = true;
         $scope.main.weeklyActivities = [];
         $scope.main.filterOpen = false;
@@ -79,12 +79,17 @@ cs142App.controller('MainController', ['$scope', '$location',
         $scope.setActivity = function(day, activityId) {
             $scope.main.weeklyActivities[day] = window.bedtimeModels.activityById(activityId);
         };
-        
+
         $scope.main.newActivity = function(dayIndex){
           var weeklyActivities = $scope.main.weeklyActivities;
           var randomActivityId = Math.floor(Math.random() * activitiesCount) + 1;
           weeklyActivities[dayIndex] = window.bedtimeModels.activityById(randomActivityId);
           $scope.main.weeklyActivities = weeklyActivities;
+        };  
+
+        $scope.main.randomActivity = function(){
+          var randomActivityId = Math.floor(Math.random() * activitiesCount) + 1;
+          return window.bedtimeModels.activityById(randomActivityId);
         };  
 
         $scope.main.resetActivities = function() {
@@ -96,5 +101,9 @@ cs142App.controller('MainController', ['$scope', '$location',
           $scope.main.weeklyActivities = weeklyActivities;
         };
         $scope.main.resetActivities();
+
+        $scope.main.pastActivitiesStack = [];
+        $scope.main.futureActivitiesStack = [];
+
 
     }]);

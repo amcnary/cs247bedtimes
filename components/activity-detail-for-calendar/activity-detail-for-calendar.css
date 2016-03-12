@@ -78,9 +78,34 @@ a {
     font-size: 18pt;
     text-decoration: normal;
 }
-
-
-
+#fastDetailsBox {
+    /*border: 3pt solid black;*/
+    /*border-radius: 1pt;*/
+/*    padding: 10pt;
+*/    /*float: right;*/
+    /*display: inline-block;*/
+    height: 100%;
+    vertical-align: center;
+    margin-left: 30pt;
+}
+.imageAndDetails {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+}
+.description {
+    color: black;
+    border: none;
+    padding: 10pt;
+    table-layout: fixed;
+    min-width: 140pt;
+    height: 160pt;
+    overflow-y: scroll;
+}
+.actImage {
+    /*float: left;*/
+}
 /* Timer Stuff*/
 #endActivityButton {
     font-size: 18pt;
@@ -97,9 +122,9 @@ a {
     z-index: 10;
     top: 10%;
     left: 10%;
-    width: 70%;
-    height: 70%;
-    background-color: #EEEFF7;
+    width: 80%;
+    height: 80%;
+    background-color: white;
     border: 2pt solid #1C1D21;
     vertical-align: center;
 }

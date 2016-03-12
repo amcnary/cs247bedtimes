@@ -22,7 +22,6 @@ cs142App.controller('ActivityDetailController', ['$scope', '$routeParams', '$int
     $scope.swapOutCurrentEvent = function(index) {
       $scope.main.weeklyActivities[index] = $scope.currentActivity;
       console.log($scope.currentActivity.name, ' is on the schedule!');
-      alert($scope.currentActivity.name, ' is on the schedule!');
     }
 
     // Timer stuff -- broken, but don't worry about it

@@ -12,7 +12,9 @@ cs142App.controller('ActivityForCalendarDetailController', ['$scope', '$routePar
     $scope.dayOfWeek = $scope.daysOfWeek[$scope.weekday];
     $scope.dayBefore = $scope.daysOfWeek[($scope.weekday + 6) % 7];
     $scope.dayAfter = $scope.daysOfWeek[($scope.weekday + 1) % 7];
-    console.log(($scope.weekday + 6) % 7, ($scope.weekday), ($scope.weekday + 1) % 7);
+
+    $scope.main.pastActivitiesStack = [];
+    $scope.main.futureActivitiesStack = [];
 
     $scope.isFavorite = function(activity) {
       // // console.log($scope.main.likedActivities.indexOf(activity) !== -1);
@@ -23,17 +25,31 @@ cs142App.controller('ActivityForCalendarDetailController', ['$scope', '$routePar
       }
       return 'notFavorite';
     };
+    
     $scope.swapOutCurrentEvent = function(index) {
       $scope.main.weeklyActivities[index] = $scope.activityForCalendar;
       console.log($scope.activityForCalendar.name, ' is on the schedule!');
-      alert($scope.activityForCalendar.name, ' is on the schedule!');
     }
     $scope.newRandomEvent = function() {
-      console.log('oh boy', $scope.main.weeklyActivities);
-      $scope.main.newActivity($scope.weekday);
-      $scope.activityForCalendar = $scope.main.weeklyActivities[$scope.weekday];
-      console.log('and now, )', $scope.main.weeklyActivities);
+      $scope.main.pastActivitiesStack.push($scope.activityForCalendar);
+      if($scope.main.futureActivitiesStack.length === 0) {
+        $scope.main.newActivity($scope.weekday);
+      } else {
+        var nextActivity = $scope.main.futureActivitiesStack.pop();
+        $scope.main.weeklyActivities[$scope.weekday] = nextActivity;
+      }
+      $scope.activityForCalendar = $scope.main.weeklyActivities[$scope.weekday];        
     };
+    $scope.lastEvent = function() {
+      $scope.main.futureActivitiesStack.push($scope.activityForCalendar);
+      console.log($scope.main.pastActivitiesStack, $scope.main.pastActivitiesStack.length);
+      if($scope.main.pastActivitiesStack.length > 0) {
+        var lastActivity = $scope.main.pastActivitiesStack.pop();
+        $scope.main.weeklyActivities[$scope.weekday] = lastActivity;
+        $scope.activityForCalendar = $scope.main.weeklyActivities[$scope.weekday];        
+      }
+    };
+
 
     // Timer stuff -- broken, but don't worry about it
     $scope.main.timerStarted = false;
@@ -48,10 +64,8 @@ cs142App.controller('ActivityForCalendarDetailController', ['$scope', '$routePar
                     $scope.main.timeLeft  -= 1;
                     $scope.main.timeLeftLabel = parseInt($scope.main.timeLeft/60) + ' minutes and ' + ($scope.main.timeLeft % 60) + ' seconds'; 
                     if($scope.main.timeLeft <= 0){
-                      alert("Time's up!");
                       document.getElementById('timeLeftLabel').style.display = "none";
                     }                    
                   }
     }, 1000, 90000);
-
 }]);

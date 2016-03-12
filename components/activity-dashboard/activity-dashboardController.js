@@ -14,19 +14,15 @@ cs142App.controller('ActivityDashboardController', ['$scope', '$routeParams', '$
                     'Saturday'];
 
     var activitiesCount = window.bedtimeModels.activitiesCount();
+    $scope.pastActivitiesStack = [[], [], [], [], [], [], []];
+    $scope.futureActivitiesStack = [[], [], [], [], [], [], []];
 
     if($scope.main.weeklyActivities.length === 0){
       $scope.main.resetActivities();
     }
-
+    $scope.exportingPDF = false;
     $scope.currentActivity = $scope.main.weeklyActivities[0];
 
-    $scope.main.newActivity = function(dayIndex){
-      var weeklyActivities = $scope.main.weeklyActivities;
-      var randomActivityId = Math.floor(Math.random() * activitiesCount) + 1;
-      weeklyActivities[dayIndex] = window.bedtimeModels.activityById(randomActivityId);
-      $scope.main.weeklyActivities = weeklyActivities;
-    };  
 
     $scope.main.goToActivity = function(dayOfWeek){
       $location.path('/activityForCalendar/' + dayOfWeek);
@@ -38,7 +34,26 @@ cs142App.controller('ActivityDashboardController', ['$scope', '$routeParams', '$
 
     $scope.exportToPdf = function() {
       console.log('downloading');
-      alert('Creating PDF now!');
     };
+
+
+    $scope.newRandomEvent = function(weekday) {
+      $scope.pastActivitiesStack[weekday].push($scope.main.weeklyActivities[weekday]);
+      if($scope.futureActivitiesStack[weekday].length === 0) {
+        $scope.main.weeklyActivities[weekday] = $scope.main.randomActivity();
+      } else {
+        var nextActivity = $scope.futureActivitiesStack[weekday].pop();
+        $scope.main.weeklyActivities[weekday] = nextActivity;
+
+      }
+    };
+    $scope.lastEvent = function(weekday) {
+      $scope.futureActivitiesStack[weekday].push($scope.main.weeklyActivities[weekday]);
+      if($scope.pastActivitiesStack[weekday].length > 0) {
+        var lastActivity = $scope.pastActivitiesStack[weekday].pop();
+        $scope.main.weeklyActivities[weekday] = lastActivity;
+      }
+    };
+
 
   }]);

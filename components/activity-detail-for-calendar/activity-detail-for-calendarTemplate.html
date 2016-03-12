@@ -20,21 +20,59 @@
             </h1>
             </div>
 
-            <div ng-if="activityForCalendar.file_name !== '' ">
-            <img src="images/{{activityForCalendar.file_name}}"></img>
+            <div ng-if="activityForCalendar.file_name !== '' " class="imageAndDetails">
+                <img src="images/{{activityForCalendar.file_name}}" class="actImage"></img>
             </div>
 
-            <div ng-if="activityForCalendar.description !== '' ">
-                <div id="activityDescription">{{activityForCalendar.description}}
-                    <a ng-if="activityForCalendar.link !== '' " href= {{activityForCalendar.link}}>here</a>
+
+            <div>
+<!--                 <table class="description" cellspacing="0">
+                <tr>
+                    <td class="description" id="fastDetailsBox">
+                     <span >                    
+                    <b>Number of People:</b> 
+                    <br>1-3
+                    <br>
+                    <b>Time:</b> 
+                    <br>
+                    10-{{activityForCalendar.duration}} minutes
+                    <br>
+                    <b>Activity Level:</b> 
+                    <br>{{activityForCalendar.activity_level}}
+                </span>
+                    </td>
+
+                    <td class="description">
+                <span ng-if="activityForCalendar.description !== ''" id="activityDescription">{{activityForCalendar.description}}
+                <a ng-if="activityForCalendar.link !== '' " href= {{activityForCalendar.link}}>here</a>
+                </span>
+                    </td>
+                </tr>
+                </table> -->
+                 <div >                    
+                    <b>Number of People:</b> 
+                    <br>1-3
+                    <br>
+                    <b>Time:</b> 
+                    <br>
+                    10-{{activityForCalendar.duration}} minutes
+                    <br>
+                    <b>Activity Level:</b> 
+                    <br>{{activityForCalendar.activity_level}}
                 </div>
+
+                <div ng-if="activityForCalendar.description !== ''" id="activityDescription">{{activityForCalendar.description}}
+                <a ng-if="activityForCalendar.link !== '' " href= {{activityForCalendar.link}}>here</a>
+                </div>
+
             </div>
 
             <div id="changeActivityButtons">
-                <md-button id="lastActivity" class="changeActivityInvertedButton">Last Activity</md-button>
+                <md-button id="lastActivity" class="changeActivityInvertedButton" ng-disabled="main.pastActivitiesStack.length === 0" ng-click="lastEvent()">Last Activity</md-button>
                 <span flex></span>
-                <md-button id="startActivity" class="buttonStyle">Start!</md-button>
+                <md-button id="startActivity" ng-click="startTimer()" class="buttonStyle">Start!</md-button>
                 <span flex></span>
+                
                 <md-button id="newActivity" ng-click="newRandomEvent()" class="changeActivityInvertedButton">New Activity</md-button>
             </div>
 
@@ -50,9 +88,9 @@
         Start activity now
     </md-button>
 </div>
-<div ng-if="main.timerStarted" id="timerDiv">
+ --><div ng-if="main.timerStarted" id="timerDiv">
     <div id="timerContent">
-        <h2 class="md-display-1" id="timeLeftLabel">{{timeLeftLabel}} left before bedtime!</h2>
+        <h2 class="md-display-1" id="timeLeftLabel">{{main.timeLeftLabel}} left before bedtime!</h2>
         <md-button class="md-raised" href="bedtime.html#/activityFeedback/{{activityForCalendar.id}}" id="endActivityButton">Goodnight</md-button>
     </div>
-</div> -->
+</div>
